@@ -1,13 +1,14 @@
 const path = require('path')
-function resolve(dir) {
-  return path.join(__dirname, dir)
+function pathResolve(dir) {
+  return path.resolve(__dirname, '.', dir);
 }
-
 module.exports = {
-  alias: {
-    // 键必须以斜线开始和结束
-    '/@/': resolve(__dirname, './src')
-  },
+  alias: [
+    {
+      find: /^\/@\//,
+      replacement: pathResolve('src') + '/',
+    },
+  ],
   // hostname: '0.0.0.0',
   // port: 3000,
   // 是否自动在浏览器打开
