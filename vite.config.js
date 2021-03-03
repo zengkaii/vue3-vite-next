@@ -1,14 +1,20 @@
+import vue from '@vitejs/plugin-vue'
+
 const path = require('path')
 function pathResolve(dir) {
-  return path.resolve(__dirname, '.', dir);
+  return path.resolve(__dirname, '.', dir)
 }
 module.exports = {
-  alias: [
-    {
-      find: /^\/@\//,
-      replacement: pathResolve('src') + '/',
-    },
-  ],
+
+  resolve: {
+    alias: [
+      {
+        find: /^\/@\//,
+        replacement: pathResolve('src') + '/'
+      }
+    ]
+  },
+  plugins: [vue()],
   // hostname: '0.0.0.0',
   // port: 3000,
   // 是否自动在浏览器打开

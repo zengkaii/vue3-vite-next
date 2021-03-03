@@ -1,9 +1,9 @@
 <template>
   <div class="home">
-		100vw = 320px?
+		100vw = 375px
 		<div>
-			<van-button>
-				123
+			<van-button size="large" type="primary">
+				van-button
 			</van-button>
 		</div>
   </div>
@@ -25,8 +25,8 @@ export default defineComponent({
 </script>
 <style lang="less" scoped>
 .home{
-	width: 750px;
-	background-color: red;
+	width: 375px;
+	background-color: gray;
 	height: 100vh;
 }
 	
