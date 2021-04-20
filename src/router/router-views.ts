@@ -10,6 +10,11 @@ const routerChildren = [
     name: 'trans',
     component: () => import('../views/trans/index.vue')
   },
+  {
+    path: '/login',
+    name: 'login',
+    component: () => import('../views/login/index.vue')
+  },
 
 ] as RouteRecordRaw[]
 
