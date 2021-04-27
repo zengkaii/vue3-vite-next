@@ -20,12 +20,14 @@ module.exports = {
   // 是否自动在浏览器打开
   open: true,
   outDir: 'dist',
-
-  // proxy: {
-  //   '/api': {
-  //     target: 'http://localhost:4000',
-  //     changeOrigin: true,
-  //     rewrite: path => path.replace(/^\/api/, '')
-  //   }
-  // }
+  server: {
+    proxy: {
+      // '/sys': 'https://www.youxiuqn-dev.com/sys',
+      '/sys': {
+        target: 'https://www.youxiuqn-dev.com/sys',
+        changeOrigin: true,
+        rewrite: path => path.replace(/^\/sys/, 'sys')
+      },
+    }
+  }
 }

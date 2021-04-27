@@ -28,7 +28,7 @@
 <script lang="ts">
 import { defineComponent, reactive } from "vue"
 import { Button, Form, Field } from "vant"
-
+import { loginByUsername } from "../../api/info"
 export default defineComponent({
   name: "Home",
   components: {
@@ -42,7 +42,15 @@ export default defineComponent({
       password: ""
     })
 
-    function onSubmit() {}
+    function onSubmit() {
+      loginByUsername({
+        phone: form.username,
+        password: form.password,
+        type: 2
+      }).then((res) => {
+        console.log(res)
+      })
+    }
     return {
       form,
       onSubmit
