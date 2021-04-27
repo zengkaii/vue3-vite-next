@@ -1,7 +1,7 @@
 import axios, { AxiosResponse, AxiosError, AxiosRequestConfig } from 'axios'
 import * as Cookies from 'js-cookie'
 // import MD5 from 'blueimp-md5'
-import LS from '../utils/LocalStorage'
+import LS from '../utils/localStorage'
 let token: object = {}
 const initToken = () => {
   setToken(LS.get('manToken') || Cookies.get('manToken'))
@@ -32,11 +32,11 @@ axios.interceptors.request.use((config: AxiosRequestConfig) => {
 axios.interceptors.response.use(({ data, status }: AxiosResponse) => {
   if (status !== 200) {
     console.log(`捕捉到回调错误`)
-    data.data = data.data ? data.data : {}
-    return data.data
+    data = data ? data : {}
+    return data
   }
-  if (data.status === '200' || data.success === true) {
-    return data.data
+  if (status === 200 || status === 206) {
+    return data
   } else {
     return Promise.reject(data)
   }

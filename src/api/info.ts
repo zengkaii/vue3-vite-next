@@ -8,5 +8,5 @@ interface LoginByUsernameModel {
     type: number | string
 }
 export const loginByUsername: any = (params: LoginByUsernameModel) => {
-    axios.post('/sys/user/login', params)
+    return axios.post('/sys/user/login', params)
 }

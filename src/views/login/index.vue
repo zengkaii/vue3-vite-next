@@ -1,6 +1,6 @@
 <template>
   <div class="login-container">
-    <van-form @submit="onSubmit">
+    <van-form @submit="onSubmit()">
       <van-field
         v-model="form.username"
         name="用户名"
@@ -29,6 +29,7 @@
 import { defineComponent, reactive } from "vue"
 import { Button, Form, Field } from "vant"
 import { loginByUsername } from "../../api/info"
+import localStorage from "../../utils/localStorage"
 export default defineComponent({
   name: "Home",
   components: {
@@ -43,13 +44,18 @@ export default defineComponent({
     })
 
     function onSubmit() {
+      console.log(loginByUsername)
       loginByUsername({
         phone: form.username,
         password: form.password,
         type: 2
-      }).then((res) => {
-        console.log(res)
       })
+        .then((res) => {
+          localStorage.put("vite-token", res.data.token)
+        })
+        .catch((err) => {
+          console.log(err, "err")
+        })
     }
     return {
       form,
