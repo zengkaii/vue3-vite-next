@@ -1,4 +1,4 @@
-import {createRouter, createWebHashHistory, RouteRecordRaw} from 'vue-router'
+import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
 import RouterViews from './router-views'
 // import LayoutContainer from '../components/layout/layout-container.vue'
 
@@ -7,7 +7,7 @@ export const routes: Array<RouteRecordRaw> = [
     path: '/',
     name: 'home',
     redirect: '/home',
-    component: () => import('/@/components/layout/index.vue'),
+    component: () => import('@/components/layout/index.vue'),
     // component: LayoutContainer,
     children: RouterViews
   }

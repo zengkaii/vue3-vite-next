@@ -7,12 +7,9 @@ function pathResolve(dir) {
 module.exports = {
 
   resolve: {
-    alias: [
-      {
-        find: /^\/@\//,
-        replacement: pathResolve('src') + '/'
-      }
-    ]
+    alias: {
+      '@': path.resolve(__dirname, 'src')
+    }
   },
   plugins: [vue()],
   // hostname: '0.0.0.0',

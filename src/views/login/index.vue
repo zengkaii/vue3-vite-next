@@ -1,6 +1,6 @@
 <template>
   <div class="login-container">
-    <van-form @submit="onSubmit()">
+    <van-form @submit="onSubmit">
       <van-field
         v-model="form.username"
         name="用户名"
@@ -28,8 +28,9 @@
 <script lang="ts">
 import { defineComponent, reactive } from "vue"
 import { Button, Form, Field } from "vant"
-import { loginByUsername } from "../../api/info"
-import localStorage from "../../utils/localStorage"
+import Types from "@/store/type"
+import { useStore } from "vuex"
+import { useRouter } from "vue-router"
 export default defineComponent({
   name: "Home",
   components: {
@@ -38,23 +39,27 @@ export default defineComponent({
     [Form.name]: Form
   },
   setup() {
+    const store = useStore()
+    const router = useRouter()
     const form = reactive({
       username: "",
       password: ""
     })
 
     function onSubmit() {
-      console.log(loginByUsername)
-      loginByUsername({
-        phone: form.username,
-        password: form.password,
-        type: 2
-      })
-        .then((res) => {
-          localStorage.put("vite-token", res.data.token)
+      store
+        .dispatch(Types.LOGIN, {
+          phone: form.username,
+          password: form.password,
+          type: 2
+        })
+        .then(() => {
+          router.replace({
+            path: "/home"
+          })
         })
         .catch((err) => {
-          console.log(err, "err")
+          console.log(err, 123)
         })
     }
     return {

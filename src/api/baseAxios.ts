@@ -36,6 +36,9 @@ axios.interceptors.response.use(({ data, status }: AxiosResponse) => {
     return data
   }
   if (status === 200 || status === 206) {
+    if (data && data.code !== '000000') {
+      return Promise.reject(data)
+    }
     return data
   } else {
     return Promise.reject(data)
