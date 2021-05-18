@@ -2,21 +2,19 @@
   <div class="home">
     100vw = 375px
     <div>
-      <van-button size="large" type="primary" @click="loginOut">
-        van-button
-      </van-button>
+      <van-button size="large" type="primary" @click="loginOut"> van-button </van-button>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue"
-import { Button } from "vant"
-import Types from "@/store/type"
-import { useStore } from "vuex"
+import { defineComponent } from 'vue'
+import { Button } from 'vant'
+import Types from '@/store/type'
+import { useStore } from 'vuex'
 
 export default defineComponent({
-  name: "Home",
+  name: 'Home',
   components: {
     [Button.name]: Button
   },

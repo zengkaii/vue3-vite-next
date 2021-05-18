@@ -26,13 +26,13 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive } from "vue"
-import { Button, Form, Field } from "vant"
-import Types from "@/store/type"
-import { useStore } from "vuex"
-import { useRouter } from "vue-router"
+import { defineComponent, reactive } from 'vue'
+import { Button, Form, Field } from 'vant'
+import Types from '@/store/type'
+import { useStore } from 'vuex'
+import { useRouter } from 'vue-router'
 export default defineComponent({
-  name: "Home",
+  name: 'Home',
   components: {
     [Button.name]: Button,
     [Field.name]: Field,
@@ -42,8 +42,8 @@ export default defineComponent({
     const store = useStore()
     const router = useRouter()
     const form = reactive({
-      username: "",
-      password: ""
+      username: '',
+      password: ''
     })
 
     function onSubmit() {
@@ -55,7 +55,7 @@ export default defineComponent({
         })
         .then(() => {
           router.replace({
-            path: "/home"
+            path: '/home'
           })
         })
         .catch((err) => {

@@ -1,4 +1,5 @@
 import axios, { AxiosResponse, AxiosError, AxiosRequestConfig } from 'axios'
+import { Toast } from 'vant';
 import * as Cookies from 'js-cookie'
 // import MD5 from 'blueimp-md5'
 import LS from '../utils/localStorage'
@@ -35,8 +36,9 @@ axios.interceptors.response.use(({ data, status }: AxiosResponse) => {
     data = data ? data : {}
     return data
   }
-  if (status === 200 || status === 206) {
+  if (status === 200) {
     if (data && data.code !== '000000') {
+      Toast(data.msg);
       return Promise.reject(data)
     }
     return data
@@ -44,9 +46,7 @@ axios.interceptors.response.use(({ data, status }: AxiosResponse) => {
     return Promise.reject(data)
   }
 }, (error: any) => {
-  if (error.response.status === 404) {
-  }
-  console.log(error.message)
+  Toast(error.message)
   return Promise.reject(error)
 })
 export default axios
