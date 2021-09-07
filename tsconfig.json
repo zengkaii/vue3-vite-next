@@ -25,7 +25,8 @@
     "strictFunctionTypes": false,
     "baseUrl": ".",
     "types": [
-      "vite/client"
+      "vite/client",
+      "@types/node"
     ],
     "paths": {
       "@/*": [
